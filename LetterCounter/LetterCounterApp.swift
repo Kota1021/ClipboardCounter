@@ -6,23 +6,25 @@
 //
 
 import SwiftUI
+import Foundation
 
 @main
 struct LetterCounterApp: App {
     @NSApplicationDelegateAdaptor(AppDelegate.self) var appDelegate
-    @State private var counter: Int = 0
+    @StateObject private var counter = Counter()
 
     var body: some Scene {
         MenuBarExtra {
-            Text("Characters: \(counter)")
-            Text("Words: \(counter)")
+            Text("Characters: \(counter.characters)")
+            Text("Words: \(counter.words)")
         } label: {
-            Text("\(counter)")
+            Text("\(counter.characters)")
                 .onReceive(NotificationCenter.default.publisher(for: .NSPasteboardDidChange)){ notification in
                     guard let pb = notification.object as? NSPasteboard else { return }
                     guard let items = pb.pasteboardItems else { return }
                     guard let item = items.first?.string(forType: .string) else { return } // you should handle multiple types
-                    counter = item.count
+                    counter.characters = item.count
+                    counter.words = NSSpellChecker.shared.countWords(in: item, language: "En")
                 }
         }
 
