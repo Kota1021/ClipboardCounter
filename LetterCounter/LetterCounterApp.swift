@@ -15,8 +15,12 @@ struct LetterCounterApp: App {
 
     var body: some Scene {
         MenuBarExtra {
-            Text("Characters: \(counter.characters)")
-            Text("Words: \(counter.words)")
+            Text("\(counter.characters) characters")
+            Text("\(counter.words) words")
+            Divider()
+            Button("Quit") {
+                NSApplication.shared.terminate(nil)
+            }.keyboardShortcut("q")
         } label: {
             Text("\(counter.characters)")
                 .onReceive(NotificationCenter.default.publisher(for: .NSPasteboardDidChange)){ notification in
