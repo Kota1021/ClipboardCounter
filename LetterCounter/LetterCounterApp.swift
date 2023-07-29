@@ -11,12 +11,20 @@ import NaturalLanguage
 @main
 struct LetterCounterApp: App {
     @NSApplicationDelegateAdaptor(AppDelegate.self) var appDelegate
+    @Environment(\.openWindow) private var openWindow
     @StateObject private var counter = Counter()
 
     var body: some Scene {
+        Window("Settings",id: "SettingsView") {
+            Text("Settings detail")
+        }
         MenuBarExtra {
             Text("\(counter.characters) characters")
             Text("\(counter.words) words")
+            Divider()
+            Button("Settings") {
+                openWindow(id: "SettingsView")
+            }
             Divider()
             Button("Quit") {
                 NSApplication.shared.terminate(nil)
