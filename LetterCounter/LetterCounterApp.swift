@@ -6,7 +6,7 @@
 //
 
 import SwiftUI
-import Foundation
+import NaturalLanguage
 
 @main
 struct LetterCounterApp: App {
@@ -24,10 +24,18 @@ struct LetterCounterApp: App {
                     guard let items = pb.pasteboardItems else { return }
                     guard let item = items.first?.string(forType: .string) else { return } // you should handle multiple types
                     counter.characters = item.count
-                    counter.words = NSSpellChecker.shared.countWords(in: item, language: "En")
+
+                    let tokenizer = NLTokenizer(unit: .word)
+                    tokenizer.string = item
+                    let range = item.startIndex..<item.endIndex
+                    let tokenArray = tokenizer.tokens(for: range)
+                    if let text = tokenizer.string {
+                        counter.words = tokenArray.count
+                    } else {
+                        counter.words = 0
+                    }
                 }
         }
 
     }
-    
 }
