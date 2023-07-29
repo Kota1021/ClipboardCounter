@@ -13,7 +13,10 @@ struct LetterCounterApp: App {
     @State private var counter: Int = 0
 
     var body: some Scene {
-        MenuBarExtra {} label: {
+        MenuBarExtra {
+            Text("Characters: \(counter)")
+            Text("Words: \(counter)")
+        } label: {
             Text("\(counter)")
                 .onReceive(NotificationCenter.default.publisher(for: .NSPasteboardDidChange)){ notification in
                     guard let pb = notification.object as? NSPasteboard else { return }
