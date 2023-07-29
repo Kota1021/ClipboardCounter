@@ -8,11 +8,18 @@
 import SwiftUI
 
 struct SettingView: View {
+    @State var counterOnManuBar: CounterKind = .words
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        Picker("Menu bar Counter", selection: $counterOnManuBar) {
+            Text("words").tag(CounterKind.words)
+            Text("characters").tag(CounterKind.characters)
+        }.pickerStyle(.radioGroup)
+    }
+    enum CounterKind {
+        case words, characters
     }
 }
 
-#Preview {
-    SettingView()
-}
+//#Preview {
+//    SettingView()
+//}

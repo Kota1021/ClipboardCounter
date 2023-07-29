@@ -16,8 +16,8 @@ struct LetterCounterApp: App {
 
     var body: some Scene {
         Window("Settings",id: "SettingsView") {
-            Text("Settings detail")
-        }
+            SettingView()
+        }.windowResizability(.contentMinSize)
         MenuBarExtra {
             Text("\(counter.characters) characters")
             Text("\(counter.words) words")
