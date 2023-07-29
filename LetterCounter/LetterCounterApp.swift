@@ -41,11 +41,7 @@ struct LetterCounterApp: App {
                     tokenizer.string = item
                     let range = item.startIndex..<item.endIndex
                     let tokenArray = tokenizer.tokens(for: range)
-                    if let text = tokenizer.string {
-                        counter.words = tokenArray.count
-                    } else {
-                        counter.words = 0
-                    }
+                    counter.words = tokenArray.count
                 }
         }
 
