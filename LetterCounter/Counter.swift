@@ -10,4 +10,8 @@ import SwiftUI
 class Counter: ObservableObject {
     @Published var characters: Int = 0
     @Published var words: Int = 0
+    
+    enum Kind {
+        case words, characters
+    }
 }

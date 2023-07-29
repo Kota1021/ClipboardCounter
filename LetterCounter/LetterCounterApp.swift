@@ -11,32 +11,36 @@ import NaturalLanguage
 @main
 struct LetterCounterApp: App {
     @NSApplicationDelegateAdaptor(AppDelegate.self) var appDelegate
-    @Environment(\.openWindow) private var openWindow
+    
     @StateObject private var counter = Counter()
-
+    @State private var menuBarIcon = Counter.Kind.words
+    
     var body: some Scene {
-        Window("Settings",id: "SettingsView") {
-            SettingView()
-        }.windowResizability(.contentMinSize)
         MenuBarExtra {
-            Text("\(counter.characters) characters")
-            Text("\(counter.words) words")
-            Divider()
-            Button("Settings") {
-                openWindow(id: "SettingsView")
+            Button("\(counter.characters) characters") {
+                menuBarIcon = .characters
+            }
+            Button("\(counter.words) words") {
+                menuBarIcon = .words
             }
             Divider()
             Button("Quit") {
                 NSApplication.shared.terminate(nil)
             }.keyboardShortcut("q")
         } label: {
-            Text("\(counter.characters)")
+            
+            let icon: String =  switch menuBarIcon {
+            case .words: "\(counter.words)W"
+            case .characters: "\(counter.characters)C"
+            }
+            
+            Text("\(icon)")
                 .onReceive(NotificationCenter.default.publisher(for: .NSPasteboardDidChange)){ notification in
                     guard let pb = notification.object as? NSPasteboard else { return }
                     guard let items = pb.pasteboardItems else { return }
                     guard let item = items.first?.string(forType: .string) else { return } // you should handle multiple types
                     counter.characters = item.count
-
+                    
                     let tokenizer = NLTokenizer(unit: .word)
                     tokenizer.string = item
                     let range = item.startIndex..<item.endIndex
@@ -44,6 +48,6 @@ struct LetterCounterApp: App {
                     counter.words = tokenArray.count
                 }
         }
-
+        
     }
 }
