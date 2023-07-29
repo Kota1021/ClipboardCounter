@@ -16,6 +16,7 @@
 		67084FB62A74057D00F08ACF /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67084FB52A74057D00F08ACF /* AppDelegate.swift */; };
 		67084FBD2A74DCA200F08ACF /* Counter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67084FBC2A74DCA200F08ACF /* Counter.swift */; };
 		67084FC02A74E07C00F08ACF /* Languages.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67084FBF2A74E07C00F08ACF /* Languages.swift */; };
+		67084FC32A74F0A100F08ACF /* SettingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67084FC22A74F0A100F08ACF /* SettingView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -50,6 +51,7 @@
 		67084FB52A74057D00F08ACF /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		67084FBC2A74DCA200F08ACF /* Counter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Counter.swift; sourceTree = "<group>"; };
 		67084FBF2A74E07C00F08ACF /* Languages.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Languages.swift; sourceTree = "<group>"; };
+		67084FC22A74F0A100F08ACF /* SettingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -101,6 +103,7 @@
 			isa = PBXGroup;
 			children = (
 				67084FB42A73FD4300F08ACF /* Info.plist */,
+				67084FC22A74F0A100F08ACF /* SettingView.swift */,
 				67084F892A73FC8F00F08ACF /* LetterCounterApp.swift */,
 				67084FBF2A74E07C00F08ACF /* Languages.swift */,
 				67084FB52A74057D00F08ACF /* AppDelegate.swift */,
@@ -291,6 +294,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				67084FB62A74057D00F08ACF /* AppDelegate.swift in Sources */,
+				67084FC32A74F0A100F08ACF /* SettingView.swift in Sources */,
 				67084FC02A74E07C00F08ACF /* Languages.swift in Sources */,
 				67084F8A2A73FC8F00F08ACF /* LetterCounterApp.swift in Sources */,
 				67084FBD2A74DCA200F08ACF /* Counter.swift in Sources */,
